@@ -44,8 +44,17 @@ const projects = [
   }
 ];
 
+type Project = {
+  id: string;
+  title: string;
+  description: string;
+  tech: string[];
+  demo: string;
+  github: string;
+};
+
 export default function PortfolioApp() {
-  const [activeProject, setActiveProject] = useState(null);
+  const [activeProject, setActiveProject] = useState<Project | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
