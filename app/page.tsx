@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Github, ExternalLink, Briefcase, Database, Code, User } from 'lucide-react';
+import Link from 'next/link';
+import Image from 'next/image';
 
 const projects = [
   {
@@ -50,7 +52,13 @@ export default function PortfolioApp() {
     <div className="min-h-screen bg-gradient-to-b from-white via-slate-50 to-slate-100 text-slate-800">
       <header className="max-w-5xl mx-auto p-6 flex items-center justify-between">
         <div className="flex items-center gap-4">
-          <div className="w-12 h-12 rounded-full bg-green-600 flex items-center justify-center text-white font-semibold text-lg">OS</div>
+          <Image 
+            src={"/images/marty.jpg"}
+            alt='my-image'
+            height={500}
+            width={500}
+             className="w-12 h-12 rounded-full bg-green-600 flex items-center justify-center text-white font-semibold text-lg"
+          />
           <div>
             <h1 className="text-xl font-bold">Okonkwo Stephen Ifeanyi</h1>
             <p className="text-sm text-slate-600">Data Science • Backend Development • Database Engineering</p>
@@ -93,17 +101,17 @@ export default function PortfolioApp() {
             transition={{ duration: 0.5 }}
             className="col-span-2"
           >
-            <h2 className="text-3xl font-extrabold mb-2">Hi — I’m Stephen. I build data-driven and backend systems.</h2>
+            <h2 className="text-3xl font-extrabold mb-2">Hi — I&apos;m Stephen. I build data-driven and backend systems.</h2>
             <p className="text-slate-600 mb-4">
               I am a Computer Science student at Hallmark University (Year 3) focused on Data Science, backend development, and databases. I enjoy turning messy data into actionable insights and creating dependable backend systems.
             </p>
             <div className="flex flex-wrap gap-3">
-              <a href="mailto:stephenokonkwo18@gmail.com" className="inline-flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-md hover:brightness-95">
+              <Link href="mailto:stephenokonkwo18@gmail.com" className="inline-flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-md hover:brightness-95">
                 <Mail size={16} /> Contact Me
-              </a>
-              <a href="https://tubular-valkyrie-d321c9.netlify.app/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-4 py-2 border rounded-md">
+              </Link>
+              <Link href="https://tubular-valkyrie-d321c9.netlify.app/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-4 py-2 border rounded-md">
                 <ExternalLink size={16} /> View Live Dashboard
-              </a>
+              </Link>
             </div>
           </motion.div>
 
@@ -114,7 +122,13 @@ export default function PortfolioApp() {
             className="bg-white p-4 rounded-2xl shadow-md"
           >
             <div className="flex items-center gap-3">
-              <div className="w-16 h-16 rounded-full bg-green-600 flex items-center justify-center text-white font-bold text-lg">OS</div>
+                 <Image 
+            src={"/images/marty.jpg"}
+            alt='my-image'
+            height={500}
+            width={500}
+             className="w-12 h-12 rounded-full bg-green-600 flex items-center justify-center text-white font-semibold text-lg"
+          />
               <div>
                 <h3 className="font-semibold">Nigeria, Lagos</h3>
                 <p className="text-sm text-slate-500">+234 9134 5183 52</p>
@@ -252,7 +266,7 @@ export default function PortfolioApp() {
   );
 }
 
-function ProjectModal({ project, onClose }) {
+function ProjectModal({ project, onClose }: { project: any; onClose: () => void }) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
       <motion.div initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="w-full max-w-3xl bg-white rounded-2xl p-6 shadow-lg">
@@ -261,7 +275,7 @@ function ProjectModal({ project, onClose }) {
             <h3 className="text-xl font-semibold">{project.title}</h3>
             <p className="text-sm text-slate-600 mt-2">{project.description}</p>
             <div className="flex gap-2 mt-3 flex-wrap">
-              {project.tech.map((t) => (
+              {project.tech.map((t : any) => (
                 <span key={t} className="text-xs px-2 py-1 rounded-md bg-slate-100">{t}</span>
               ))}
             </div>
@@ -290,7 +304,7 @@ function ContactForm() {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [sent, setSent] = useState(false);
 
-  function submit(e) {
+  function submit(e: React.FormEvent) {
     e.preventDefault();
     // Client-side demo only — for production connect to a server or service like Formspree
     console.log('Contact form submitted', form);
