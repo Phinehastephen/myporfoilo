@@ -251,7 +251,7 @@ export default function PortfolioApp() {
                 <Mail size={16} /> <a href="mailto:stephenokonkwo18@gmail.com" className="underline">stephenokonkwo18@gmail.com</a>
               </div>
               <div className="flex items-center gap-2 text-sm">
-                <Github size={16} /> <a href="#" className="underline">GitHub (add your repo link)</a>
+                <Github size={16} /> <a href="#" className="underline">GitHub (https://github.com/Phinehastephen)</a>
               </div>
             </div>
           </div>
